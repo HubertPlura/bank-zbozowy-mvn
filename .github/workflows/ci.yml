@@ -8,12 +8,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 21
-      working-directory: ./CI/Maven?bank-zbozowy-mvn
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'adopt'
           cache: maven
+
       - name: Validate, build and run tests
+        working-directory: ./CI/Maven/bank-zbozowy-mvn
         run: mvn --batch-mode --update-snapshots verify
